@@ -1,113 +1,236 @@
-import Image from 'next/image'
+import Image from "next/image";
+
+const NavBar = () => (
+  <nav className="navbar flex justify-between bg-red-200">
+    <div>
+      <Image src="/readit-logo.png" alt="site logo" width={75} height={75} />
+    </div>
+    <ul className="flex">
+      <li className="btn m-1">Home</li>
+      <li className="btn m-1">Featues</li>
+      <li className="btn m-1">Community</li>
+    </ul>
+  </nav>
+);
+
+const LandingPageTitle = () => (
+  <div className="text-5xl text-bold text-center bg-amber-200">
+    <h2>Unlock the full potential of your books today!</h2>
+  </div>
+);
+
+const LandingPageMain = () => (
+  <div className="bg-lime-200">
+    <div className="flex justify-center">
+      <Image
+        className="m-4 rounded"
+        src="/book.jpg"
+        alt="a pic of a book"
+        width={350}
+        height={200}
+      />
+      <Image
+        className="m-4 rounded"
+        src="/book.jpg"
+        alt="a pic of a book"
+        width={350}
+        height={200}
+      />
+      <Image
+        className="m-4 rounded"
+        src="/book.jpg"
+        alt="a pic of a book"
+        width={350}
+        height={200}
+      />
+      <Image
+        className="m-4 rounded"
+        src="/book.jpg"
+        alt="a pic of a book"
+        width={350}
+        height={200}
+      />
+    </div>
+    <h2 className="text-3xl">Revolutionize Your Reading</h2>
+    <div className="flex mx-3 justify-start">
+      <p className="prose mx-3">
+        Ever read a book and wish you could remember every detail or discuss it
+        with others? ReadIt will change the way you experience reading forever.
+        Let Mortimer J. Alder and Charles Van Doren guide you through their
+        methods for truly effective reading.
+      </p>
+      <ul className="flex mx-5">
+        <li className="text-3xl mx-5 text-center">
+          <p>300</p>
+          <p>Books Added</p>
+        </li>
+        <li className="text-3xl mx-5 text-center">
+          <p>50</p>
+          <p>Active Forums</p>
+        </li>
+        <li className="text-3xl mx-5 text-center">
+          <p>1000</p>
+          <p>Happy Readers</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+);
+
+const LandingPageFeatures = () => (
+  <div className="bg-purple-200">
+    <h2 className="text-3xl">Exciting Features</h2>
+    <div className="flex">
+      <div className="mr-10">
+        <Image
+          className="m-4 rounded"
+          src="/book.jpg"
+          alt="a pic of a book"
+          width={350}
+          height={200}
+        />
+      </div>
+      <ul>
+        <li>
+          <h3 className="text-2xl">Organized List</h3>
+          <p className="prose">
+            Keep track of your books and their progress in one easy place.
+          </p>
+        </li>
+        <li>
+          <h3 className="text-2xl">In-Depth Notes</h3>
+          <p className="prose">
+            Capture your thoughts and ideas while reading each section.
+          </p>
+        </li>
+        <li>
+          <h3 className="text-2xl">Community Chats</h3>
+          <p className="prose">
+            Join forums and blogs to share your insights with fellow book
+            lovers.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+);
+
+const LandingPageCta = () => (
+  <div>
+    <div className="flex justify-center">
+      <Image
+        className="m-4 rounded"
+        src="/book.jpg"
+        alt="a pic of a book"
+        width={200}
+        height={200}
+      />
+      <Image
+        className="m-4 rounded"
+        src="/book.jpg"
+        alt="a pic of a book"
+        width={200}
+        height={200}
+      />
+    </div>
+    <div className="flex flex-col  justify-center items-center bg-black text-white">
+      <div className="flex justify-center">
+        <Image
+          className="m-4 rounded"
+          src="/book.jpg"
+          alt="a pic of a book"
+          width={50}
+          height={50}
+        />
+      </div>
+      <h2 className="text-center">Getting Started</h2>
+      <p className="text-center">
+        Ready to revolutionize your reading experience? Sign up now and start
+        exploring the world of books like never before!
+      </p>
+      <button className="btn">Join Readit Today</button>
+    </div>
+  </div>
+);
+
+const AboutMe = () => (
+  <div className="flex flex-col bg-blue-200  justify-center items-center">
+    <div>
+    <Image
+          className="m-4 rounded"
+          src="/book.jpg"
+          alt="a pic of a book"
+          width={50}
+          height={50}
+        />
+    </div>
+    <ul className="flex">
+      <li>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          className="feather feather-twitter"
+        >
+          <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+        </svg>
+      </li>
+      <li>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          className="feather feather-github"
+        >
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+        </svg>
+      </li>
+      <li>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          className="feather feather-linkedin"
+        >
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </li>
+    </ul>
+    <div>
+      <p>copyright</p>
+    </div>
+  </div>
+);
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    <div>
+      <NavBar />
+      <LandingPageTitle />
+      <LandingPageMain />
+      <LandingPageFeatures />
+      <LandingPageCta />
+      <AboutMe />
+    </div>
+  );
 }
