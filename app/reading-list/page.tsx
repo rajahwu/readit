@@ -5,7 +5,7 @@ import NavBar from "../components/SiteNav/NavBar";
 import AboutMe from "../components/AboutMe";
 
 export default async function ReadingList() {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createServerComponentClient<Database>({ cookies });
   const {
     data: { session },
   } = await supabase.auth.getSession();

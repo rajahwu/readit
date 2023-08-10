@@ -7,7 +7,7 @@ import SplashPage from "./components/LandingPage";
 import AboutMe from "./components/AboutMe";
 
 export default async function Home() {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createServerComponentClient<Database>({ cookies });
   const {
     data: { session },
   } = await supabase.auth.getSession();
