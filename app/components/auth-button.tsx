@@ -1,19 +1,33 @@
-'use client'
+"use client";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation"
 
 export default function AuthButton() {
-    const supabase = createClientComponentClient()
-    const handleSignIn = async () => {
-        await supabase.auth.signInWithOAuth({
-          provider: 'github',
-          options: {
-            redirectTo: 'http://localhost:3000/auth/callback'
-          }
-        })
-    }
+  const supabase = createClientComponentClient();
+  const router = useRouter()
 
-    return (
-        <button className="btn" onClick={handleSignIn}>Join Readit Today</button>
-    )
+  const handleSignIn = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "github",
+      options: {
+        redirectTo: "http://localhost:3000/auth/callback",
+      },
+    });
+  };
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+  };
+
+  return (
+    <div>
+      <button className="btn" onClick={handleSignIn}>
+        Join Readit Today
+      </button>
+      <button className="btn" onClick={handleSignOut}>
+        Logout
+      </button>
+    </div>
+  );
 }
