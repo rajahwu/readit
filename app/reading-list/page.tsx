@@ -1,10 +1,20 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import NavBar from "../components/SiteNav/NavBar";
+import AboutMe from "../components/AboutMe";
 
 export default async function ReadingList() {
   const supabase = createServerComponentClient({ cookies });
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
   const { data: readables } = await supabase.from("readables").select();
+
+  if (!session) {
+    redirect("/");
+  }
   return (
     <div
       style={{
@@ -14,9 +24,11 @@ export default async function ReadingList() {
         width: "100vw",
       }}
     >
-      <pre style={{ backgroundColor: "black", paddingBottom: "300px" }}>
+      <NavBar />
+      <pre style={{ backgroundColor: "black", paddingBottom: "50px" }}>
         {JSON.stringify(readables, null, 2)}
       </pre>
+      <AboutMe />
     </div>
   );
 }

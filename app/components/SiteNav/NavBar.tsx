@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AuthButtonServer from "../auth-button-server"
 
 export default function NavBar() {
     return (
@@ -10,6 +11,9 @@ export default function NavBar() {
             <li className="btn m-1">Home</li>
             <li className="btn m-1">Features</li>
             <li className="btn m-1">Community</li>
+            <li className="btn m-1">
+              <AuthButtonServer />
+            </li>
           </ul>
         </nav>
       );
