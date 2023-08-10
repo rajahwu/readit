@@ -8,7 +8,7 @@ export default function NavBar() {
           </div>
           <ul className="flex">
             <li className="btn m-1">Home</li>
-            <li className="btn m-1">Featues</li>
+            <li className="btn m-1">Features</li>
             <li className="btn m-1">Community</li>
           </ul>
         </nav>

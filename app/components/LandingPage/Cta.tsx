@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AuthButton from "../auth-button"
 
 export default function LandingPageCta() {
   return (
@@ -34,7 +35,7 @@ export default function LandingPageCta() {
           Ready to revolutionize your reading experience? Sign up now and start
           exploring the world of books like never before!
         </p>
-        <button className="btn">Join Readit Today</button>
+        <AuthButton />
       </div>
     </div>
   );
