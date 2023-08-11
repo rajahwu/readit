@@ -46,13 +46,40 @@ export interface Database {
           }
         ]
       }
+      profiles: {
+        Row: {
+          avatar_url: string
+          id: string
+          name: string
+          username: string
+        }
+        Insert: {
+          avatar_url?: string
+          id: string
+          name: string
+          username: string
+        }
+        Update: {
+          avatar_url?: string
+          id?: string
+          name?: string
+          username?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_id_fkey"
+            columns: ["id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       readables: {
         Row: {
           author: string | null
           created_at: string
           end_date: string | null
           id: string
-          note_id: string | null
           progress: string | null
           reader_id: string
           start_date: string | null
@@ -66,7 +93,6 @@ export interface Database {
           created_at?: string
           end_date?: string | null
           id?: string
-          note_id?: string | null
           progress?: string | null
           reader_id: string
           start_date?: string | null
@@ -80,7 +106,6 @@ export interface Database {
           created_at?: string
           end_date?: string | null
           id?: string
-          note_id?: string | null
           progress?: string | null
           reader_id?: string
           start_date?: string | null
@@ -91,15 +116,9 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "readables_note_id_fkey"
-            columns: ["note_id"]
-            referencedRelation: "notes"
-            referencedColumns: ["id"]
-          },
-          {
             foreignKeyName: "readables_reader_id_fkey"
             columns: ["reader_id"]
-            referencedRelation: "users"
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           }
         ]
