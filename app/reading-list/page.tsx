@@ -36,16 +36,34 @@ export default async function ReadingList() {
       }}
     >
       <NavBar />
-      <div className="flex bg-black justify-around">
-        <div>
+      <div className="flex bg-black justify-start p-4 mx-auto">
+        {/* <div>
           <h2 className="text-2xl">New Readable</h2>
           <NewReadable />
-        </div>
-        <div className="bg-gray-400 mockup-code border border-base-300">
-          <pre className="bg-gray-200 text-black">
-            <span>var notes = </span>
-            {JSON.stringify(readablesWithNotes, null, 2)}
-          </pre>
+        </div> */}
+        <div className="bg-slate-100 border border-base-300">
+          {readablesWithNotes?.map((readable) => {
+            console.log(readable);
+            return (
+              <div
+                className="card-body text-slate-800 hover:bg-slate-500 hover:text-slate-200"
+                key={readable.id}
+              >
+                <h3 className="card-title">{readable.type}</h3>
+                <div className="flex">
+                  <div className="card-body">
+                    <p>{readable.profiles?.name}</p>
+                    <p>{readable.profiles?.username}</p>
+                    <p>{readable.profiles?.avatar_url}</p>
+                  </div>
+                  <div className="card-body">
+                    <p>{readable.title}</p>
+                    <p>{readable.author}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
       <AboutMe />
