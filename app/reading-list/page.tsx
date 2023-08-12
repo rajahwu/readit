@@ -14,19 +14,20 @@ export default async function ReadingList() {
 
   const { data } = await supabase
     .from("readables")
-    .select("*, profiles(*), ratings(stars, readable_id, reader_id), notes(*)");
+    .select("*, profiles(*), ratings(*), notes(*)");
 
   const readables =
     data?.map((readable) => ({
       ...readable,
+      reader: Array.isArray(readable.profiles) ? readable.profiles[0] : readable.profiles,
       reader_has_rated_readable: !!readable.ratings.find(
         (rating) =>
           rating.reader_id === session?.user.id &&
           rating.readable_id === readable.id
       )?.stars,
-    })) ?? [];
+    })) as ReadableWithReader[] ?? []
 
-  console.log(JSON.stringify(readables, null, 2));
+  // console.log(JSON.stringify(readables, null, 2));
   if (!session) {
     redirect("/");
   }
@@ -56,9 +57,9 @@ export default async function ReadingList() {
                 <h3 className="card-title">{readable.type}</h3>
                 <div className="flex">
                   <div className="card-body">
-                    <p>{readable.profiles?.name}</p>
-                    <p>{readable.profiles?.username}</p>
-                    <p>{readable.profiles?.avatar_url}</p>
+                    <p>{readable.reader.name}</p>
+                    <p>{readable.reader.username}</p>
+                    <p>{readable.reader.avatar_url}</p>
                   </div>
                   <div className="card-body">
                     <p>{readable.title}</p>
