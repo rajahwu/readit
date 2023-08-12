@@ -47,14 +47,17 @@ export default async function ReadingList() {
       <div className="flex bg-black justify-start p-4 mx-auto">
         <div className="bg-slate-100 border border-base-300">
           {readables?.map((readable) => {
-            // console.log(readable);
             return (
               <div
                 className="card-body text-slate-800 hover:bg-slate-500 hover:text-slate-200"
                 key={readable.id}
               >
-                <h3 className="card-title">{readable.type} {readable.title}</h3>
-                <div className="flex">
+                <div className="flex flex-col justify-start card-title">
+                  <h3>Title: &quot;{readable.title}&quot;</h3>
+                  <h2>Type: {readable.type}</h2>
+                </div>
+
+                <div className="flex menu">
                   <div className="card-body">
                     <p>{readable.reader.name}</p>
                     <p>{readable.reader.username}</p>
@@ -63,11 +66,12 @@ export default async function ReadingList() {
                   <div className="card-body">
                     <p>{readable.title}</p>
                     <p>{readable.author}</p>
-                    <div>
-                    <h2 className="text-2xl">New Note</h2>
-                    <NewNote readable={readables[0]} />
+                    <div className="">
+                      <NewNote readable={readables[0]} />
                     </div>
-                    <Rating readable={readable} />
+                    <div className=""> 
+                      <Rating readable={readable} />
+                    </div>
                     <hr />
                     <ul>
                       <h3 className="text-sm">Notes</h3>
