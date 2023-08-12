@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import NavBar from "../components/SiteNav/NavBar";
 import AboutMe from "../components/AboutMe";
+import Rating from "../components/ratings";
 import NewReadable from "../components/new-readable";
 
 export default async function ReadingList() {
@@ -11,18 +12,20 @@ export default async function ReadingList() {
     data: { session },
   } = await supabase.auth.getSession();
 
-  const { data: readables } = await supabase
+  const { data } = await supabase
     .from("readables")
-    .select("*, profiles(*)");
-  const { data: notes } = await supabase.from("notes").select();
+    .select("*, profiles(*), ratings(*), notes(*)");
 
-  const readablesWithNotes = readables?.map((readable) => {
-    const assocatedNotes = notes?.filter((note) => {
-      return note.readable_id === readable.id;
-    });
-    return { ...readable, notes: assocatedNotes };
-  });
+  const readables =
+    data?.map((readable) => ({
+      ...readable,
+      reader_has_rated_readable:
+        !!readable.ratings.find(
+          (rating) => rating.reader_id === session?.user.id
+        )?.stars,
+    })) ?? [];
 
+  // console.log(readables);
   if (!session) {
     redirect("/");
   }
@@ -42,8 +45,8 @@ export default async function ReadingList() {
           <NewReadable />
         </div> */}
         <div className="bg-slate-100 border border-base-300">
-          {readablesWithNotes?.map((readable) => {
-            console.log(readable);
+          {readables?.map((readable) => {
+            // console.log(readable);
             return (
               <div
                 className="card-body text-slate-800 hover:bg-slate-500 hover:text-slate-200"
@@ -59,6 +62,16 @@ export default async function ReadingList() {
                   <div className="card-body">
                     <p>{readable.title}</p>
                     <p>{readable.author}</p>
+                    <Rating readable={readable} />
+                    <hr />
+                    <ul>
+                      <h3 className="text-sm">Notes</h3>
+                      {readable.notes.length
+                        ? readable.notes.map((note) => (
+                            <li key={note.id}>{note.title}</li>
+                          ))
+                        : "none"}
+                    </ul>
                   </div>
                 </div>
               </div>

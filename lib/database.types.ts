@@ -74,6 +74,43 @@ export interface Database {
           }
         ]
       }
+      ratings: {
+        Row: {
+          created_at: string
+          id: string
+          readable_id: string
+          reader_id: string
+          stars: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          readable_id: string
+          reader_id: string
+          stars?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          readable_id?: string
+          reader_id?: string
+          stars?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ratings_readable_id_fkey"
+            columns: ["readable_id"]
+            referencedRelation: "readables"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ratings_reader_id_fkey"
+            columns: ["reader_id"]
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       readables: {
         Row: {
           author: string | null
