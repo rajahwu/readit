@@ -1,17 +1,19 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { type Readable } from "@/lib/database.types";
 
-export const rateReadable = async (readable: Readable, rating: number) => {
+export const rateReadable = async (
+  readableWithReader: ReadableWithReader,
+  rating: number
+) => {
   const supabase = createClientComponentClient<Database>();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
   if (user) {
-    if (!readable.reader_has_rated_readable) {
+    if (!readableWithReader.reader_has_rated_readable) {
       const { data, error } = await supabase.from("ratings").insert({
         reader_id: user.id,
-        readable_id: readable.id,
+        readable_id: readableWithReader.id,
         stars: rating,
       });
 
@@ -24,11 +26,11 @@ export const rateReadable = async (readable: Readable, rating: number) => {
       const { data, error } = await supabase
         .from("ratings")
         .delete()
-        .match({ reader_id: user.id, readable_id: readable.id })
+        .match({ reader_id: user.id, readable_id: readableWithReader.id })
         .then(() =>
           supabase.from("ratings").insert({
             reader_id: user.id,
-            readable_id: readable.id,
+            readable_id: readableWithReader.id,
             stars: rating,
           })
         );

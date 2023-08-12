@@ -14,17 +14,19 @@ export default async function ReadingList() {
 
   const { data } = await supabase
     .from("readables")
-    .select("*, profiles(*), ratings(*), notes(*)");
+    .select("*, profiles(*), ratings(stars, readable_id, reader_id), notes(*)");
 
   const readables =
     data?.map((readable) => ({
       ...readable,
       reader_has_rated_readable: !!readable.ratings.find(
-        (rating) => rating.reader_id === session?.user.id && rating.readable_id === readable.id
+        (rating) =>
+          rating.reader_id === session?.user.id &&
+          rating.readable_id === readable.id
       )?.stars,
     })) ?? [];
 
-  console.log(readables);
+  console.log(JSON.stringify(readables, null, 2));
   if (!session) {
     redirect("/");
   }
