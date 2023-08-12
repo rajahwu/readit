@@ -25,7 +25,7 @@ export default async function ReadingList() {
         )?.stars,
     })) ?? [];
 
-  // console.log(readables);
+  console.log(readables);
   if (!session) {
     redirect("/");
   }
