@@ -1,7 +1,7 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import { type Readable } from "@/lib/database.types";
 
-export const rateReadable = async (readable, rating: number) => {
+export const rateReadable = async (readable: Readable, rating: number) => {
   const supabase = createClientComponentClient<Database>();
   const {
     data: { user },
@@ -16,13 +16,12 @@ export const rateReadable = async (readable, rating: number) => {
       });
 
       if (error) {
-        console.log("Error updating rating", error);
+        console.log("Error inserting rating", error);
       } else {
-        console.log("Rating updated:", data);
+        console.log("Rating inserted:", data);
       }
-      // router.refresh();
     } else {
-      await supabase
+      const { data, error } = await supabase
         .from("ratings")
         .delete()
         .match({ reader_id: user.id, readable_id: readable.id })
@@ -34,12 +33,11 @@ export const rateReadable = async (readable, rating: number) => {
           })
         );
 
-      // if (error) {
-      //   console.log("Error updating rating", error);
-      // } else {
-      //   console.log("Rating updated:", data);
-      // }
-      // router.refresh();
+      if (error) {
+        console.log("Error updating rating", error);
+      } else {
+        console.log("Rating updated:", data);
+      }
     }
   }
 };

@@ -19,10 +19,9 @@ export default async function ReadingList() {
   const readables =
     data?.map((readable) => ({
       ...readable,
-      reader_has_rated_readable:
-        !!readable.ratings.find(
-          (rating) => rating.reader_id === session?.user.id
-        )?.stars,
+      reader_has_rated_readable: !!readable.ratings.find(
+        (rating) => rating.reader_id === session?.user.id && rating.readable_id === readable.id
+      )?.stars,
     })) ?? [];
 
   console.log(readables);
