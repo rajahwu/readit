@@ -5,6 +5,10 @@ import { redirect } from "next/navigation";
 import NavBar from "./components/SiteNav/NavBar";
 import SplashPage from "./components/LandingPage";
 import AboutMe from "./components/AboutMe";
+/**
+ * Home page component servers splash page
+ * @component 
+ */
 
 export default async function Home() {
   const supabase = createServerComponentClient<Database>({ cookies });
