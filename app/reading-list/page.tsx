@@ -5,6 +5,7 @@ import NavBar from "../components/SiteNav/NavBar";
 import AboutMe from "../components/AboutMe";
 import Rating from "../components/ratings";
 import NewReadable from "../components/new-readable";
+import NewNote from "../components/new-note";
 
 export default async function ReadingList() {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -17,15 +18,17 @@ export default async function ReadingList() {
     .select("*, profiles(*), ratings(*), notes(*)");
 
   const readables =
-    data?.map((readable) => ({
+    (data?.map((readable) => ({
       ...readable,
-      reader: Array.isArray(readable.profiles) ? readable.profiles[0] : readable.profiles,
+      reader: Array.isArray(readable.profiles)
+        ? readable.profiles[0]
+        : readable.profiles,
       reader_has_rated_readable: !!readable.ratings.find(
         (rating) =>
           rating.reader_id === session?.user.id &&
           rating.readable_id === readable.id
       )?.stars,
-    })) as ReadableWithReader[] ?? []
+    })) as ReadableWithReader[]) ?? [];
 
   // console.log(JSON.stringify(readables, null, 2));
   if (!session) {
@@ -42,10 +45,6 @@ export default async function ReadingList() {
     >
       <NavBar />
       <div className="flex bg-black justify-start p-4 mx-auto">
-        {/* <div>
-          <h2 className="text-2xl">New Readable</h2>
-          <NewReadable />
-        </div> */}
         <div className="bg-slate-100 border border-base-300">
           {readables?.map((readable) => {
             // console.log(readable);
@@ -54,7 +53,7 @@ export default async function ReadingList() {
                 className="card-body text-slate-800 hover:bg-slate-500 hover:text-slate-200"
                 key={readable.id}
               >
-                <h3 className="card-title">{readable.type}</h3>
+                <h3 className="card-title">{readable.type} {readable.title}</h3>
                 <div className="flex">
                   <div className="card-body">
                     <p>{readable.reader.name}</p>
@@ -64,6 +63,10 @@ export default async function ReadingList() {
                   <div className="card-body">
                     <p>{readable.title}</p>
                     <p>{readable.author}</p>
+                    <div>
+                    <h2 className="text-2xl">New Note</h2>
+                    <NewNote readable={readables[0]} />
+                    </div>
                     <Rating readable={readable} />
                     <hr />
                     <ul>
@@ -79,6 +82,10 @@ export default async function ReadingList() {
               </div>
             );
           })}
+        </div>
+        <div className="flex flex-col">
+          <h2 className="text-2xl">New Readable</h2>
+          <NewReadable />
         </div>
       </div>
       <AboutMe />
