@@ -36,8 +36,10 @@
       "app/auth/callback/route.ts",
       "app/components/*.tsx",
       "app/features/*.tsx",
-      "app/utills/*.tsx"
+      "app/utills/*.tsx",
+      "lib/database.types.ts"
     ],
+    "name": "Readit",
     "out": "public/docs"
   },
   "include": [
