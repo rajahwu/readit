@@ -1,11 +1,11 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import NavBar from "../components/SiteNav/NavBar";
-import AboutMe from "../components/AboutMe";
-import Rating from "../components/ratings";
-import NewReadable from "../components/new-readable";
-import NewNote from "../components/new-note";
+import NavBar from "../_components/SiteNav/NavBar";
+import AboutMe from "../_components/AboutMe";
+import Rating from "../_components/ratings";
+import NewReadable from "../_components/new-readable";
+import NewNote from "../_components/new-note";
 
 export default async function ReadingList() {
   const supabase = createServerComponentClient<Database>({ cookies });

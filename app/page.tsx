@@ -2,12 +2,12 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-import NavBar from "./components/SiteNav/NavBar";
-import SplashPage from "./components/LandingPage";
-import AboutMe from "./components/AboutMe";
+import NavBar from "./_components/SiteNav/NavBar";
+import SplashPage from "./_components/LandingPage";
+import AboutMe from "./_components/AboutMe";
 /**
  * Home page component servers splash page
- * @component 
+ * @component
  */
 
 export default async function Home() {
