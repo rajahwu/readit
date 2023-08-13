@@ -27,6 +27,8 @@ export default function NewReadable() {
     }
   };
   return (
+    <details className="dropdown mb-32">
+    <summary className="m-1 btn">New Readable</summary>
     <form
       className="flex flex-col gap-1 border bg-slate-800"
       action={addReadable}
@@ -43,5 +45,6 @@ export default function NewReadable() {
       <input className="text-black p-1" type="progress" />
       <input className="btn mt-1 bg-slate-900 text-white" type="submit" />
     </form>
+      </details>
   );
 }

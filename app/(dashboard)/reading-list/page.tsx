@@ -1,11 +1,13 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import NavBar from "../_components/SiteNav/NavBar";
-import AboutMe from "../_components/AboutMe";
-import Rating from "../_components/ratings";
-import NewReadable from "../_components/new-readable";
-import NewNote from "../_components/new-note";
+import {
+  NavBar,
+  AboutMe,
+  Rating,
+  NewReadable,
+  NewNote,
+} from "../../_components";
 
 export default async function ReadingList() {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -34,6 +36,7 @@ export default async function ReadingList() {
   if (!session) {
     redirect("/");
   }
+
   return (
     <div
       style={{
@@ -52,6 +55,10 @@ export default async function ReadingList() {
                 className="card-body text-slate-800 hover:bg-slate-500 hover:text-slate-200"
                 key={readable.id}
               >
+                <div className="flex flex-col">
+                  <h2 className="text-2xl">New Readable</h2>
+                  <NewReadable />
+                </div>
                 <div className="flex flex-col justify-start card-title">
                   <h3>Title: &quot;{readable.title}&quot;</h3>
                   <h2>Type: {readable.type}</h2>
@@ -69,7 +76,7 @@ export default async function ReadingList() {
                     <div className="">
                       <NewNote readable={readables[0]} />
                     </div>
-                    <div className=""> 
+                    <div className="">
                       <Rating readable={readable} />
                     </div>
                     <hr />
@@ -86,10 +93,6 @@ export default async function ReadingList() {
               </div>
             );
           })}
-        </div>
-        <div className="flex flex-col">
-          <h2 className="text-2xl">New Readable</h2>
-          <NewReadable />
         </div>
       </div>
       <AboutMe />
