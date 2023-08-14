@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { rateReadable } from "../_utills/rate-readable";
+import { rateReadable } from "../_utils/rate-readable";
 
 const Star = ({ handleClick }: { handleClick: () => void }) => {
   return (

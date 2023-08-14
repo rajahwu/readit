@@ -33,10 +33,11 @@
     "entryPoints": [
       "app/*.tsx",
       "app/*.ts",
+      "app/(dashboard)/reading-list/*.tsx",
       "app/auth/callback/route.ts",
-      "app/components/*.tsx",
+      "app/_components/*.tsx",
       "app/features/*.tsx",
-      "app/utills/*.tsx",
+      "app/_utils/*.tsx",
       "lib/database.types.ts"
     ],
     "name": "Readit",

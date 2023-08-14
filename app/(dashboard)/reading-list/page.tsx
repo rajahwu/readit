@@ -38,64 +38,65 @@ export default async function ReadingList() {
   }
 
   return (
-    <div
-      style={{
-        backgroundColor: "black",
-        color: "white",
-        height: "100vh",
-        width: "100vw",
-      }}
-    >
+    <>
       <NavBar />
-      <div className="flex bg-black justify-start p-4 mx-auto">
-        <div className="bg-slate-100 border border-base-300">
-          {readables?.map((readable) => {
-            return (
-              <div
-                className="card-body text-slate-800 hover:bg-slate-500 hover:text-slate-200"
-                key={readable.id}
-              >
-                <div className="flex flex-col">
-                  <h2 className="text-2xl">New Readable</h2>
-                  <NewReadable />
-                </div>
-                <div className="flex flex-col justify-start card-title">
-                  <h3>Title: &quot;{readable.title}&quot;</h3>
-                  <h2>Type: {readable.type}</h2>
+      <div className="bg-slate-100 border border-base-300">
+        
+        {/* TODO Make New Readable Layout Component */}
+        <div className="flex flex-col border bg-slate-500">
+          <h2 className="text-2xl">New Readable</h2>
+          <NewReadable />
+        </div>
+
+        {/* TODO Make Reading List Component */}
+        {readables?.map((readable) => {
+          return (
+            <div
+              className="card-body text-slate-800 hover:bg-slate-500 hover:text-slate-200"
+              key={readable.id}
+            >
+              {/* TODO Make Readable Title Component */}
+              <div className="flex flex-col justify-start card-title">
+                <h3>Title: &quot;{readable.title}&quot;</h3>
+                <h2>Type: {readable.type}</h2>
+              </div>
+
+              {/* TODO Make Reader Profile Component */}
+              <div className="flex">
+                <div className="card-body">
+                  <p>{readable.reader.name}</p>
+                  <p>{readable.reader.username}</p>
+                  <p>{readable.reader.avatar_url}</p>
                 </div>
 
-                <div className="flex menu">
-                  <div className="card-body">
-                    <p>{readable.reader.name}</p>
-                    <p>{readable.reader.username}</p>
-                    <p>{readable.reader.avatar_url}</p>
+                {/* TODO Make Readable Details Component */}
+                <div className="card-body">
+                  <p>{readable.title}</p>
+                  <p>{readable.author}</p>
+                  <div className="">
+                    <NewNote readable={readables[0]} />
                   </div>
-                  <div className="card-body">
-                    <p>{readable.title}</p>
-                    <p>{readable.author}</p>
-                    <div className="">
-                      <NewNote readable={readables[0]} />
-                    </div>
-                    <div className="">
-                      <Rating readable={readable} />
-                    </div>
-                    <hr />
-                    <ul>
-                      <h3 className="text-sm">Notes</h3>
-                      {readable.notes.length
-                        ? readable.notes.map((note) => (
-                            <li key={note.id}>{note.title}</li>
-                          ))
-                        : "none"}
-                    </ul>
+                  <div className="">
+                    <Rating readable={readable} />
                   </div>
+                  <hr />
+
+                  {/* TODO Make Readable Notes Component */}
+                  <ul>
+                    <h3 className="text-sm">Notes</h3>
+                    {readable.notes.length
+                      ? readable.notes.map((note) => (
+                          <li key={note.id}>{note.title}</li>
+                        ))
+                      : "none"}
+                  </ul>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
       <AboutMe />
-    </div>
+    </>
   );
 }
