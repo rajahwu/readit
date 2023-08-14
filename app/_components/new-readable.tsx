@@ -30,7 +30,7 @@ export default function NewReadable() {
   };
   return (
     <details className="dropdown mb-32">
-      <summary className="m-1 btn">New Readable</summary>
+      <summary className="m-1 btn">Add Readable</summary>
       <form
         className="flex flex-col gap-1 border bg-slate-800"
         action={addReadable}

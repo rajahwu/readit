@@ -19,7 +19,7 @@ export default async function Home() {
   } = await supabase.auth.getSession();
 
   if (session) {
-    redirect("/reading-list");
+    redirect("/dashboard");
   }
 
   return (

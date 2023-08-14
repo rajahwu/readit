@@ -3,11 +3,12 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { NavBar, AboutMe } from "../../_components";
 import ReadingListHeader from "@/app/_components/reading-list-header";
-import ReadingListItems from "./reading-list";
+import ReadingList from "./reading-list";
+import DashboardLayout from "../_dashboard-layout/layout";
 
 export const dynamic = "force-dynamic";
 
-export default async function ReadingList() {
+export default async function Dashboard() {
   const supabase = createServerComponentClient<Database>({ cookies });
   const {
     data: { session },
@@ -16,12 +17,19 @@ export default async function ReadingList() {
   if (!session) {
     redirect("/");
   }
+  const DashboardContent = () => (
+    <>
+      <ReadingListHeader />
+      <ReadingList />
+    </>
+  );
 
   return (
     <>
       <NavBar />
-      <ReadingListHeader />
-      <ReadingListItems />
+      <DashboardLayout>
+        <DashboardContent />
+      </DashboardLayout>
       <AboutMe />
     </>
   );

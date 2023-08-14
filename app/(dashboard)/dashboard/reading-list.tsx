@@ -7,7 +7,7 @@ import {
   ReadableDetailsCard,
 } from "@/app/_components";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function ReadingList() {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -34,13 +34,9 @@ export default async function ReadingList() {
 
   return readables?.map((readable) => {
     return (
-      <div
-        className="card-body text-slate-800 hover:bg-slate-500 hover:text-slate-200"
-        key={readable.id}
-      >
+      <div className="" key={readable.id}>
         <ReadableTitle readable={readable} />
         <div className="flex">
-          <ReaderProfile readable={readable} />
           <ReadableDetailsCard readable={readable} />
         </div>
       </div>
