@@ -6,6 +6,9 @@ import AuthButtonServer from "./auth-button-server";
 import NewNote from "./new-note";
 import NewReadable from "./new-readable";
 import Rating from "./ratings";
+import ReadableTitle from "./readable-title";
+import ReaderProfile from "./reader-profile";
+import ReadableDetailsCard from "./readable-deatails";
 
 export {
     SplashPage,
@@ -15,5 +18,8 @@ export {
     AuthButtonServer,
     NewNote,
     NewReadable,
-    Rating
+    Rating,
+    ReadableTitle,
+    ReaderProfile,
+    ReadableDetailsCard
 }
