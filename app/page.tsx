@@ -10,6 +10,8 @@ import AboutMe from "./_components/AboutMe";
  * @component
  */
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const supabase = createServerComponentClient<Database>({ cookies });
   const {

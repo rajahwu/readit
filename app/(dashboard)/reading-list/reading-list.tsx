@@ -7,6 +7,8 @@ import {
   ReadableDetailsCard,
 } from "@/app/_components";
 
+export const dynamic = 'force-dynamic';
+
 export default async function ReadingList() {
   const supabase = createServerComponentClient<Database>({ cookies });
   const {

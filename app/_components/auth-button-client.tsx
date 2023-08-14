@@ -14,7 +14,7 @@ export default function AuthButtonClient<Database>({ session }: { session: Sessi
     await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: "http://localhost:3000/auth/callback",
+        redirectTo: `${location.origin}:3000/auth/callback`,
       },
     });
   };

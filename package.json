@@ -27,6 +27,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "encoding": "^0.1.13",
     "typedoc": "^0.24.8"
   }
 }

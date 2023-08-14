@@ -1,6 +1,8 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
+export const dynamic = "force-dynamic";
+
 export default function NewReadable() {
   const addReadable = async (formData: FormData) => {
     "use server";
@@ -28,23 +30,23 @@ export default function NewReadable() {
   };
   return (
     <details className="dropdown mb-32">
-    <summary className="m-1 btn">New Readable</summary>
-    <form
-      className="flex flex-col gap-1 border bg-slate-800"
-      action={addReadable}
-    >
-      <label htmlFor="title">Title:</label>
-      <input className="text-black p-1" name="title" />
-      <label htmlFor="author">Author:</label>
-      <input className="text-black p-1" name="author" />
-      <label htmlFor="type">Type:</label>
-      <input className="text-black p-1" name="type" />
-      <label htmlFor="status">Status:</label>
-      <input className="text-black p-1" type="status" />
-      <label htmlFor="progress">Progress:</label>
-      <input className="text-black p-1" type="progress" />
-      <input className="btn mt-1 bg-slate-900 text-white" type="submit" />
-    </form>
-      </details>
+      <summary className="m-1 btn">New Readable</summary>
+      <form
+        className="flex flex-col gap-1 border bg-slate-800"
+        action={addReadable}
+      >
+        <label htmlFor="title">Title:</label>
+        <input className="text-black p-1" name="title" />
+        <label htmlFor="author">Author:</label>
+        <input className="text-black p-1" name="author" />
+        <label htmlFor="type">Type:</label>
+        <input className="text-black p-1" name="type" />
+        <label htmlFor="status">Status:</label>
+        <input className="text-black p-1" type="status" />
+        <label htmlFor="progress">Progress:</label>
+        <input className="text-black p-1" type="progress" />
+        <input className="btn mt-1 bg-slate-900 text-white" type="submit" />
+      </form>
+    </details>
   );
 }

@@ -1,12 +1,11 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import {
-  NavBar,
-  AboutMe,
-} from "../../_components";
+import { NavBar, AboutMe } from "../../_components";
 import ReadingListHeader from "@/app/_components/reading-list-header";
 import ReadingListItems from "./reading-list";
+
+export const dynamic = "force-dynamic";
 
 export default async function ReadingList() {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -21,8 +20,8 @@ export default async function ReadingList() {
   return (
     <>
       <NavBar />
-        <ReadingListHeader />
-        <ReadingListItems />
+      <ReadingListHeader />
+      <ReadingListItems />
       <AboutMe />
     </>
   );
