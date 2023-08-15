@@ -1,11 +1,7 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-import {
-  ReadableTitle,
-  ReaderProfile,
-  ReadableDetailsCard,
-} from "@/app/_components";
+import { ReadableTitle, ReadableDetailsCard } from "@/app/_components";
 
 export const dynamic = "force-dynamic";
 
@@ -35,10 +31,7 @@ export default async function ReadingList() {
   return readables?.map((readable) => {
     return (
       <div className="" key={readable.id}>
-        <ReadableTitle readable={readable} />
-        <div className="flex">
           <ReadableDetailsCard readable={readable} />
-        </div>
       </div>
     );
   });

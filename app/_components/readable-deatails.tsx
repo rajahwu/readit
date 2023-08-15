@@ -1,17 +1,19 @@
-import { NewNote, Rating } from ".";
+import { NewNote, Rating, ReadableTitle } from ".";
 
 const ReadableNotes = ({ readable }: { readable: ReadableWithReader }) => (
-  <ul>
-    <h3 className="text-sm">Notes</h3>
-    {readable.notes.length
-      ? readable.notes.map((note) => (
-          <div key={note.id} className="flex justify-between">
-            <li>{note.title}</li>
-            <button className="border">Delete</button>
-          </div>
-        ))
-      : "none"}
-  </ul>
+  <div className="bg-yellow-600">
+    <ul>
+      <h3 className="text-sm">Notes</h3>
+      {readable.notes.length
+        ? readable.notes.map((note) => (
+            <div key={note.id} className="flex justify-between">
+              <li>{note.title}</li>
+              <button className="border">Delete</button>
+            </div>
+          ))
+        : "none"}
+    </ul>
+  </div>
 );
 
 export default function ReadableDetailsCard({
@@ -20,17 +22,15 @@ export default function ReadableDetailsCard({
   readable: ReadableWithReader;
 }) {
   return (
-    <div className="card-body">
-      <p>{readable.title}</p>
-      <p>{readable.author}</p>
-      <div className="">
-        <NewNote readable={readable} />
-      </div>
-      <div className="">
+    <div className="flex flex-col m-16 w-full">
+      <div className="flex">
+        <ReadableTitle readable={readable} />
         <Rating readable={readable} />
       </div>
-      <hr />
-      <ReadableNotes readable={readable} />
+      <div className="flex">
+        <ReadableNotes readable={readable} />
+        <NewNote readable={readable} />
+      </div>
     </div>
   );
 }

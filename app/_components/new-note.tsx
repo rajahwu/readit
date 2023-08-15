@@ -33,20 +33,22 @@ export default function NewNote({
   };
 
   return (
-    <details className="dropdown mb-32">
-      <summary className="m-1 btn">New Note</summary>
-      <form
-        className="flex flex-col gap-1 border bg-slate-800 menu dropdown-content z-[1]"
-        action={addNoteToReadable}
-      >
-        <label htmlFor="title">Title:</label>
-        <input className="text-black p-1" name="title" />
-        <label htmlFor="content">Notes:</label>
-        <input className="text-black p-1" name="content" />
-        <label htmlFor="reference">Reference:</label>
-        <input className="text-black p-1" name="reference" />
-        <input className="btn mt-1 bg-slate-900 text-white" type="submit" />
-      </form>
-    </details>
+    <div className="bg-lime-600">
+      <details className="dropdown mb-32">
+        <summary className="m-1 btn">New Note</summary>
+        <form
+          className="flex flex-col gap-1 border bg-slate-800 menu dropdown-content z-[1]"
+          action={addNoteToReadable}
+        >
+          <label htmlFor="title">Title:</label>
+          <input className="text-black p-1" name="title" />
+          <label htmlFor="content">Notes:</label>
+          <input className="text-black p-1" name="content" />
+          <label htmlFor="reference">Reference:</label>
+          <input className="text-black p-1" name="reference" />
+          <input className="btn mt-1 bg-slate-900 text-white" type="submit" />
+        </form>
+      </details>
+    </div>
   );
 }

@@ -19,7 +19,7 @@ export default function Rating({ readable }: { readable: ReadableWithReader }) {
     router.refresh();
   };
   return (
-    <>
+    <div className="bg-amber-600">
       <p>Reader rating: </p>
       <p>
         Ratings: {readable.ratings.length} {}
@@ -48,6 +48,6 @@ export default function Rating({ readable }: { readable: ReadableWithReader }) {
           }}
         />
       </div>
-    </>
+    </div>
   );
 }
