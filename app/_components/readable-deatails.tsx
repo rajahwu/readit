@@ -1,7 +1,7 @@
 import { NewNote, Rating, ReadableTitle } from ".";
 
 const ReadableNotes = ({ readable }: { readable: ReadableWithReader }) => (
-  <div className="bg-yellow-600">
+  <div className="bg-yellow-600 flex-1">
     <ul>
       <h3 className="text-sm">Notes</h3>
       {readable.notes.length
@@ -22,15 +22,11 @@ export default function ReadableDetailsCard({
   readable: ReadableWithReader;
 }) {
   return (
-    <div className="flex flex-col m-16 w-full">
-      <div className="flex">
+    <div className="flex flex-col w-1/4 m-6 rounded border border-red-800">
         <ReadableTitle readable={readable} />
         <Rating readable={readable} />
-      </div>
-      <div className="flex">
         <ReadableNotes readable={readable} />
         <NewNote readable={readable} />
-      </div>
     </div>
   );
 }

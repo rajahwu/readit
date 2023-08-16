@@ -33,7 +33,7 @@ export default function NewNote({
   };
 
   return (
-    <div className="bg-lime-600">
+    <div className="bg-lime-600 flex-1">
       <details className="dropdown mb-32">
         <summary className="m-1 btn">New Note</summary>
         <form

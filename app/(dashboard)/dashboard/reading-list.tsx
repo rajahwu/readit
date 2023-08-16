@@ -1,7 +1,7 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-import { ReadableTitle, ReadableDetailsCard } from "@/app/_components";
+import { ReadableDetailsCard } from "@/app/_components";
 
 export const dynamic = "force-dynamic";
 
