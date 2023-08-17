@@ -34,8 +34,8 @@ export default function NewNote({
 
   return (
     <div className="bg-lime-600 flex-1">
-      <details className="dropdown mb-32">
-        <summary className="m-1 btn">New Note</summary>
+      <details className="dropdown">
+        <summary className="m-1 bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounde border-blue-400">New Note</summary>
         <form
           className="flex flex-col gap-1 border bg-slate-800 menu dropdown-content z-[1]"
           action={addNoteToReadable}

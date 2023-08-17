@@ -5,9 +5,9 @@ export default function ReadableTitle({
 }) {
   return (
     <div className="bg-violet-600 flex-1">
-      <p>Title: &quot;{readable.title}&quot;</p>
+      <p>&quot;{readable.title}&quot;</p>
       <p>{readable.author}</p>
-      <p>Type: {readable.type}</p>
+      <p>{readable.type}</p>
     </div>
   );
 }

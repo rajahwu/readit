@@ -18,10 +18,10 @@ export default async function Dashboard() {
     redirect("/");
   }
   const DashboardContent = () => (
-    <>
+    <div className="m-4">
       <ReadingListHeader />
       <ReadingList />
-    </>
+    </div>
   );
 
   return (

@@ -3,5 +3,5 @@ export default function DashboardLayout({
 }: {
   children: JSX.Element;
 }) {
-  return <div className="bg-black">{children}</div>;
+  return <div className="m-4 w-[80%]">{children}</div>;
 }

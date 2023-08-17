@@ -29,8 +29,8 @@ export default function NewReadable() {
     }
   };
   return (
-    <details className="dropdown mb-32">
-      <summary className="m-1 btn">Add Readable</summary>
+    <details className="dropdown">
+      <summary className="m-1 bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounde border-blue-400">Add Readable</summary>
       <form
         className="flex flex-col gap-1 border bg-slate-800"
         action={addReadable}

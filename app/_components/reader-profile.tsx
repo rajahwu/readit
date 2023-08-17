@@ -1,5 +1,6 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import Image from "next/image";
 
 export default async function ReaderProfile() {
   const supabase = createServerComponentClient({ cookies });
@@ -13,10 +14,18 @@ export default async function ReaderProfile() {
 
   const reader = Array.isArray(profile) ? profile[0] : profile;
   return (
-    <div className="">
-      <p>{reader.name}</p>
-      <p>{reader.username}</p>
-      <p>{reader.avatar_url}</p>
+    <div className="flex flex-col justify-center items-center rounded-full">
+      <Image
+        className="rounded-full w-16 h-16"
+        src={reader.avatar_url}
+        width={50}
+        height={50}
+        alt="Reader avatar"
+      />
+      <div className="flex flex-col items-center justify-center space-y-0">
+        <p className="m-0 p-0">{reader.name}</p>
+        <p className="m-0 p-0">{reader.username}</p>
+      </div>
     </div>
   );
 }
