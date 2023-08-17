@@ -2,75 +2,69 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { rateReadable } from "../_utils/rate-readable";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-
-const Star = ({ handleClick }: { handleClick: () => void }) => {
-  return (
-    <div
-      className="btn mask mask-star bg-slate-700"
-      onClick={handleClick}
-    ></div>
-  );
-};
+import { getUserRating } from "../_utils/getUserRating";
 
 export default function Rating({ readable }: { readable: ReadableWithReader }) {
   const router = useRouter();
-  const supabase = createClientComponentClient();
-  const [userRating, setUserRating] = useState(null);
+  const [userRating, setUserRating] = useState<number | undefined>(undefined);
 
   useEffect(() => {
-    const getUserRating = async () => {
-      const { data } = await supabase
-        .from("ratings")
-        .select()
-        .eq("reader_id", readable.reader_id)
-        .eq("readable_id", readable.id)
-        .limit(1);
-
-      // console.log(JSON.stringify(rating, null, 2));
-      if (data) {
-        const stars = Array.isArray(data) ? data[0] : data;
-        // console.log(stars?.stars);
-        setUserRating(stars?.stars);
-      }
+    const fetchUserRating = async () => {
+      const rating = await getUserRating(readable);
+      setUserRating(rating);
     };
-    getUserRating();
-  }, []);
+    fetchUserRating();
+  }, [readable]);
 
-  // console.log(userRating)
 
   const handleClick = (numOfStars: number) => {
     rateReadable(readable, numOfStars);
+    setUserRating(numOfStars);
     router.refresh();
   };
+
   return (
     <div className="bg-amber-600 flex-1">
       <p>Reader rating: {userRating}</p>
-      <p>Ratings: {readable.ratings.length}</p>
 
-      <div className="flex p-3">
-        <Star
-          handleClick={() => {
-            handleClick(1);
-          }}
+      <div className="rating">
+        <input
+          type="radio"
+          name="rating-1"
+          className="mask mask-star"
+          checked={userRating === 1}
+          onClick={() => handleClick(1)}
         />
-        <Star handleClick={() => handleClick(2)} />
-        <Star
-          handleClick={() => {
-            handleClick(3);
-          }}
+        <input
+          type="radio"
+          name="rating-1"
+          className="mask mask-star"
+          checked={userRating === 2}
+          onClick={() => handleClick(2)}
         />
-        <Star
-          handleClick={() => {
-            handleClick(4);
-          }}
+        <input
+          type="radio"
+          name="rating-1"
+          className="mask mask-star"
+          checked={userRating === 3}
+          onClick={() => handleClick(3)}
         />
-        <Star
-          handleClick={() => {
-            handleClick(5);
-          }}
+        <input
+          type="radio"
+          name="rating-1"
+          className="mask mask-star"
+          checked={userRating === 4}
+          onClick={() => handleClick(4)}
+        />
+        <input
+          type="radio"
+          name="rating-1"
+          className="mask mask-star"
+          checked={userRating === 5}
+          onClick={() => handleClick(5)}
         />
       </div>
+      <p>Ratings: {readable.ratings.length}</p>
     </div>
   );
 }
