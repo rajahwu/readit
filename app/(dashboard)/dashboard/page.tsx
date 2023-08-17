@@ -25,12 +25,12 @@ export default async function Dashboard() {
   );
 
   return (
-    <>
+    <div className="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-500 to-gray-900">
       <NavBar />
       <DashboardLayout>
         <DashboardContent />
       </DashboardLayout>
       <AboutMe />
-    </>
+    </div>
   );
 }

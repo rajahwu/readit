@@ -5,7 +5,7 @@ import DeleteReadableButton from "./delete-readable-button";
 const ReadableNotes = ({ readable }: { readable: ReadableWithReader }) => (
   <div className="bg-yellow-600 flex-1">
     <ul>
-      <h3 className="text-sm">Notes</h3>
+      <h3 className="text-md text-bold text-center">Notes</h3>
       {readable.notes.length
         ? readable.notes.map((note) => (
             <div key={note.id} className="flex justify-between">

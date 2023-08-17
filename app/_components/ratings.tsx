@@ -16,55 +16,33 @@ export default function Rating({ readable }: { readable: ReadableWithReader }) {
     fetchUserRating();
   }, [readable]);
 
-
   const handleClick = (numOfStars: number) => {
     rateReadable(readable, numOfStars);
     setUserRating(numOfStars);
     router.refresh();
   };
 
-  return (
-    <div className="bg-amber-600 flex-1">
-      <p>Reader rating: {userRating}</p>
+  // console.log(readable.title, userRating)
 
-      <div className="rating">
-        <input
-          type="radio"
-          name="rating-1"
-          className="mask mask-star"
-          checked={userRating === 1}
-          onClick={() => handleClick(1)}
-        />
-        <input
-          type="radio"
-          name="rating-1"
-          className="mask mask-star"
-          checked={userRating === 2}
-          onClick={() => handleClick(2)}
-        />
-        <input
-          type="radio"
-          name="rating-1"
-          className="mask mask-star"
-          checked={userRating === 3}
-          onClick={() => handleClick(3)}
-        />
-        <input
-          type="radio"
-          name="rating-1"
-          className="mask mask-star"
-          checked={userRating === 4}
-          onClick={() => handleClick(4)}
-        />
-        <input
-          type="radio"
-          name="rating-1"
-          className="mask mask-star"
-          checked={userRating === 5}
-          onClick={() => handleClick(5)}
-        />
+  return (
+    userRating && (
+      <div className="bg-amber-600 flex-1">
+        <p>Reader rating: {userRating}</p>
+
+        <div className="rating">
+          {[1, 2, 3, 4, 5].map((starCount) => (
+            <input
+              key={starCount}
+              type="radio"
+              name="rating-1"
+              className="mask mask-star"
+              checked={userRating === starCount}
+              onClick={() => handleClick(starCount)}
+            />
+          ))}
+        </div>
+        <p>Ratings: {readable.ratings.length}</p>
       </div>
-      <p>Ratings: {readable.ratings.length}</p>
-    </div>
+    )
   );
 }

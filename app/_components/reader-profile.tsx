@@ -14,7 +14,8 @@ export default async function ReaderProfile() {
 
   const reader: Profile = Array.isArray(profile) ? profile[0] : profile;
   return (
-    <div className="flex flex-col justify-center items-center rounded-full">
+    <div className="m-4 flex flex-col justify-center items-center rounded-full">
+      <p className="m-0 p-0 text-md text-white tracking-wider">{reader.username.toUpperCase()}</p>
       <Image
         className="rounded-full w-16 h-16"
         src={reader.avatar_url}
@@ -23,8 +24,7 @@ export default async function ReaderProfile() {
         alt="Reader avatar"
       />
       <div className="flex flex-col items-center justify-center space-y-0">
-        <p className="m-0 p-0">{reader.name}</p>
-        <p className="m-0 p-0">{reader.username}</p>
+        <p className="m-0 p-0">Edit</p>
       </div>
     </div>
   );
