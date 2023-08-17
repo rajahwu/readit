@@ -8,7 +8,7 @@ import NewReadable from "./new-readable";
 import Rating from "./ratings";
 import ReadableTitle from "./readable-title";
 import ReaderProfile from "./reader-profile";
-import ReadableDetailsCard from "./readable-deatails";
+import ReadableDetailsCard from "./readable-details";
 
 export {
     SplashPage,

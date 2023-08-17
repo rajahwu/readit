@@ -1,4 +1,5 @@
 import { NewNote, Rating, ReadableTitle } from ".";
+import DeleteNoteButton from "./delete-note-button";
 
 const ReadableNotes = ({ readable }: { readable: ReadableWithReader }) => (
   <div className="bg-yellow-600 flex-1">
@@ -8,7 +9,7 @@ const ReadableNotes = ({ readable }: { readable: ReadableWithReader }) => (
         ? readable.notes.map((note) => (
             <div key={note.id} className="flex justify-between">
               <li>{note.title}</li>
-              <button className="border">Delete</button>
+              <DeleteNoteButton note={note} />
             </div>
           ))
         : "none"}
