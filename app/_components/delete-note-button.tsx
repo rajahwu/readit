@@ -7,8 +7,7 @@ export default function DeleteNoteButton({ note }: { note: Note }) {
 
   const handleDelete = async () => {
     const supabase = createClientComponentClient<Database>();
-    const deletedNote = await supabase.from("notes").delete().eq("id", note.id);
-    console.log(deletedNote);
+    await supabase.from("notes").delete().eq("id", note.id);
     router.refresh();
   };
 

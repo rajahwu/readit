@@ -12,7 +12,7 @@ export default async function ReaderProfile() {
     .select()
     .eq("id", user?.id);
 
-  const reader = Array.isArray(profile) ? profile[0] : profile;
+  const reader: Profile = Array.isArray(profile) ? profile[0] : profile;
   return (
     <div className="flex flex-col justify-center items-center rounded-full">
       <Image

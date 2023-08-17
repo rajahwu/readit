@@ -1,5 +1,6 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import SubmitButton from "./submit-button";
 
 export const dynamic = "force-dynamic";
 
@@ -46,7 +47,8 @@ export default function NewNote({
           <input className="text-black p-1" name="content" />
           <label htmlFor="reference">Reference:</label>
           <input className="text-black p-1" name="reference" />
-          <input className="btn mt-1 bg-slate-900 text-white" type="submit" />
+          <SubmitButton value="submit" />
+          {/* <input className="btn mt-1 bg-slate-900 text-white" type="submit" /> */}
         </form>
       </details>
     </div>
