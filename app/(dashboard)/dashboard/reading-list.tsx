@@ -29,20 +29,34 @@ export default async function ReadingList() {
       )?.stars,
     })) as ReadableWithReader[]) ?? [];
 
+  const ReadableNote = ({ notes }: { notes: Note[] }) => (
+    <div>
+      {notes.map(note => (
+        <div className="m-4" key={note.id}>
+          <p className="text-lg text-bole">{note.title}</p>
+          <p className="text-yellow-400">{note.content}</p>
+        </div>
+      ))}
+
+    </div>
+  );
+
   return readables?.map((readable) => {
     return (
       <div className="flex" key={readable.id}>
         <div className="rounded">
-        <Image
-          className="m-4 rounded"
-          src="/book.jpg"
-          alt="a pic of a book"
-          width={350}
-          height={400}
-        />
+          <Image
+            className="m-4 rounded"
+            src="/book.jpg"
+            alt="a pic of a book"
+            width={350}
+            height={400}
+          />
         </div>
         <ReadableDetailsCard readable={readable} />
-        <div className="text-white m-4 border border-red-600 w-56 h-56">Note | text</div>
+        <div className="text-white m-4 border border-red-600 w-56 h-56">
+          <ReadableNote notes={readable.notes} />
+        </div>
       </div>
     );
   });
