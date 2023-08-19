@@ -8,7 +8,7 @@ export default function LandingPageFeatures() {
         <div className="mr-10">
           <Image
             className="m-4 rounded"
-            src="/book.jpg"
+            className="w-auto h-auto" src="/book.jpg"
             alt="a pic of a book"
             width={350}
             height={200}

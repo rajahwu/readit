@@ -6,14 +6,14 @@ export default function LandingPageCta() {
       <div className="flex justify-center">
         <Image
           className="m-4 rounded"
-          src="/book.jpg"
+          className="w-auto h-auto" src="/book.jpg"
           alt="a pic of a book"
           width={200}
           height={200}
         />
         <Image
           className="m-4 rounded"
-          src="/book.jpg"
+          className="w-auto h-auto" src="/book.jpg"
           alt="a pic of a book"
           width={200}
           height={200}
@@ -23,7 +23,7 @@ export default function LandingPageCta() {
         <div className="flex justify-center">
           <Image
             className="m-4 rounded"
-            src="/book.jpg"
+            className="w-auto h-auto" src="/book.jpg"
             alt="a pic of a book"
             width={50}
             height={50}

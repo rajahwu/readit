@@ -6,7 +6,7 @@ export default function AboutMe() {
       <div>
         <Image
           className="m-4 rounded"
-          src="/book.jpg"
+          className="w-auto h-auto" src="/book.jpg"
           alt="a pic of a book"
           width={50}
           height={50}

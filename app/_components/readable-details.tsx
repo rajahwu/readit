@@ -25,7 +25,7 @@ export default function ReadableDetailsCard({
   readable: ReadableWithReader;
 }) {
   return (
-    <div className="flex flex-col w-1/4 m-6 rounded border border-red-800 scale-95 hover:scale-110 hover:z-10 hover:shadow-lg transition-all duration-1000 ease-in-out delay-75">
+    <div className="flex flex-col w-1/4 m-6 rounded border border-red-800 hover:z-10 hover:shadow-lg transition-all duration-1000 ease-in-out delay-75">
       <ReadableTitle readable={readable} />
       <Rating readable={readable} />
       <ReadableNotes readable={readable} />

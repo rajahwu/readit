@@ -25,7 +25,7 @@ export default function Rating({ readable }: { readable: ReadableWithReader }) {
   // console.log(readable.title, userRating)
 
   return (
-    userRating && (
+    (
       <div className="bg-amber-600 flex-1">
         <p>Reader rating: {userRating}</p>
 
@@ -38,6 +38,7 @@ export default function Rating({ readable }: { readable: ReadableWithReader }) {
               className="mask mask-star"
               checked={userRating === starCount}
               onClick={() => handleClick(starCount)}
+              onChange={() => setUserRating(starCount)}
             />
           ))}
         </div>
