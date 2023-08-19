@@ -7,12 +7,14 @@ export default async function ReaderProfile() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+  
   const { data: profile } = await supabase
     .from("profiles")
     .select()
     .eq("id", user?.id);
 
   const reader: Profile = Array.isArray(profile) ? profile[0] : profile;
+
   return (
     reader && (
       <div className="m-4 flex flex-col justify-center items-center rounded-full">
